@@ -142,7 +142,7 @@ function AdminDashboard() {
   const invalidateUsers = () => queryClient.invalidateQueries({ queryKey: ['admin-users'] });
 
   const updateUserMutation = useMutation({
-    mutationFn: (data: { userId: string; blocked?: boolean; customMessage?: string; resetSession?: boolean }) =>
+    mutationFn: (data: { userId: string; blocked?: boolean; customMessage?: string; resetSession?: boolean; email?: string; whatsapp?: string }) =>
       updateUser({ data }),
     onSuccess: () => { invalidateUsers(); toast.success('Usuário atualizado!'); },
     onError: (e: Error) => toast.error(e.message),
