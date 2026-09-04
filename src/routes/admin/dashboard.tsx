@@ -171,13 +171,13 @@ function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-[#F7F1EB] p-4 md:p-8 pb-20">
-      <div className="max-w-7xl mx-auto space-y-8">
-        <header>
-          <h1 className="text-3xl font-bold text-[#1A1B1A]">Painel Administrativo</h1>
-          <p className="text-neutral-500">Gestão Total LOVABLACK</p>
+      <div className="max-w-7xl mx-auto space-y-6 md:space-y-8">
+        <header className="rounded-2xl bg-white/70 border border-black/5 p-4 md:p-6">
+          <h1 className="text-2xl md:text-3xl font-bold text-[#1A1B1A]">Painel Administrativo</h1>
+          <p className="text-sm md:text-base text-neutral-500">Gestão Total LOVABLACK</p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
           <StatCard icon={Users} label="Total Registros" value={stats?.total || 0} />
           <StatCard icon={CheckCircle} label="Assinaturas Ativas" value={stats?.active || 0} color="text-green-600" />
           <StatCard icon={XCircle} label="Expirados" value={stats?.expired || 0} color="text-red-600" />
@@ -1036,14 +1036,14 @@ function DocRule({ icon: Icon, title, children }: { icon: any; title: string; ch
 function StatCard({ icon: Icon, label, value, color = "text-[#1A1B1A]" }: any) {
   return (
     <Card className="bg-white border-neutral-200">
-      <CardContent className="pt-6">
-        <div className="flex items-center gap-4">
-          <div className="p-3 bg-neutral-100 rounded-2xl">
-            <Icon className="w-6 h-6 text-[#1A1B1A]" />
+      <CardContent className="pt-4 md:pt-6 px-3 md:px-6">
+        <div className="flex items-center gap-3 md:gap-4">
+          <div className="p-2 md:p-3 bg-neutral-100 rounded-2xl shrink-0">
+            <Icon className="w-5 h-5 md:w-6 md:h-6 text-[#1A1B1A]" />
           </div>
-          <div>
-            <p className="text-xs text-neutral-500 font-bold uppercase">{label}</p>
-            <p className={`text-2xl font-black ${color}`}>{value}</p>
+          <div className="min-w-0">
+            <p className="text-[10px] md:text-xs text-neutral-500 font-bold uppercase leading-tight break-words">{label}</p>
+            <p className={`text-xl md:text-2xl font-black ${color}`}>{value}</p>
           </div>
         </div>
       </CardContent>
