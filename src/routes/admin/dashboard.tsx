@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Users, CreditCard, Clock, CheckCircle, XCircle, Download, Video, Settings, BookOpen, Ban, MessageSquare, RefreshCw, UserPlus, AlertTriangle, FileText, Plus, Trash2, Image as ImageIcon, ExternalLink, Clipboard, MessageCircle } from 'lucide-react';
+import { Users, CreditCard, Clock, CheckCircle, XCircle, Download, Video, Settings, BookOpen, Ban, MessageSquare, RefreshCw, UserPlus, AlertTriangle, FileText, Plus, Trash2, Image as ImageIcon, ExternalLink, Clipboard, MessageCircle, Pencil } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
