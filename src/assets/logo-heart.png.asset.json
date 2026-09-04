@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "2234bb43-098c-466b-8d3f-6ebfc8fe3aef",
-  "project_id": "7d10c18f-3d1c-4237-a07e-1ae9d7d16aa6",
-  "url": "/__l5e/assets-v1/2234bb43-098c-466b-8d3f-6ebfc8fe3aef/logo-heart.png",
-  "r2_key": "a/v1/7d10c18f-3d1c-4237-a07e-1ae9d7d16aa6/2234bb43-098c-466b-8d3f-6ebfc8fe3aef/logo-heart.png",
-  "original_filename": "logo-heart.png",
-  "size": 1282194,
   "content_type": "image/png",
-  "created_at": "2026-08-13T15:42:53Z"
+  "created_at": "2026-08-13T15:42:53Z",
+  "original_filename": "logo-heart.png",
+  "project_id": "ec6f8380-e73f-4bb2-8b8f-cfee0f71c378",
+  "r2_key": "a/v1/ec6f8380-e73f-4bb2-8b8f-cfee0f71c378/2234bb43-098c-466b-8d3f-6ebfc8fe3aef/logo-heart.png",
+  "size": 1282194,
+  "url": "/__l5e/assets-v1/2234bb43-098c-466b-8d3f-6ebfc8fe3aef/logo-heart.png",
+  "version": 1
 }
