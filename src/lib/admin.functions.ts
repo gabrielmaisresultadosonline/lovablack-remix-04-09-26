@@ -40,8 +40,9 @@ export const adminUpdateUser = createServerFn({ method: 'POST' })
     const { query } = await import('./db.server');
     await requireAdmin(getRequest());
     await query(
-      `UPDATE users SET blocked=coalesce($2,blocked),custom_message=coalesce($3,custom_message),session_id=CASE WHEN $4 THEN NULL ELSE session_id END,updated_at=now() WHERE id=$1`,
-      [data.userId, data.blocked ?? null, data.customMessage ?? null, data.resetSession ?? false],
+      `UPDATE users SET blocked=coalesce($2,blocked),custom_message=coalesce($3,custom_message),session_id=CASE WHEN $4 THEN NULL ELSE session_id END,
+         email=coalesce(lower($5),email),whatsapp=coalesce($6,whatsapp),updated_at=now() WHERE id=$1`,
+      [data.userId, data.blocked ?? null, data.customMessage ?? null, data.resetSession ?? false, data.email ?? null, data.whatsapp ?? null],
     );
     return { ok: true };
   });

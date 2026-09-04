@@ -53,10 +53,11 @@ export const Route = createFileRoute('/admin/dashboard')({
   errorComponent: AdminDashboardError,
 });
 
-type PlanType = 'trial' | 'monthly' | 'semiannual' | 'annual';
+type PlanType = 'trial' | 'fortnight' | 'monthly' | 'semiannual' | 'annual';
 
 const PLAN_LABELS: Record<PlanType, string> = {
   trial: 'Teste 30 min',
+  fortnight: '15 Dias',
   monthly: 'Mensal',
   semiannual: 'Semestral',
   annual: 'Anual',
@@ -320,6 +321,7 @@ function AdminDashboard() {
                           <TableCell className="text-right whitespace-nowrap">
                             <UserActions
                               user={u}
+                              onEdit={(email, whatsapp) => updateUserMutation.mutate({ userId: u.id, email, whatsapp })}
                               onMessage={(msg) => updateUserMutation.mutate({ userId: u.id, customMessage: msg })}
                               onPlan={(plan) => setPlanMutation.mutate({ userId: u.id, plan })}
                               onResetSession={() => updateUserMutation.mutate({ userId: u.id, resetSession: true })}
@@ -857,15 +859,19 @@ function CreateUserDialog({ onCreate, isPending }: { onCreate: (p: CreateUserPay
 }
 
 interface UserActionsProps {
-  user: { id: string; custom_message: string | null; full_name: string | null };
+  user: { id: string; custom_message: string | null; full_name: string | null; email: string; whatsapp: string | null };
+  onEdit: (email: string, whatsapp: string) => void;
   onMessage: (msg: string) => void;
   onPlan: (plan: PlanType) => void;
   onResetSession: () => void;
 }
 
-function UserActions({ user, onMessage, onPlan, onResetSession }: UserActionsProps) {
+function UserActions({ user, onEdit, onMessage, onPlan, onResetSession }: UserActionsProps) {
   const [msgOpen, setMsgOpen] = useState(false);
   const [message, setMessage] = useState(user.custom_message ?? '');
+  const [editOpen, setEditOpen] = useState(false);
+  const [email, setEmail] = useState(user.email);
+  const [whatsapp, setWhatsapp] = useState(user.whatsapp ?? '');
 
   return (
     <div className="flex items-center justify-end gap-2">
@@ -877,6 +883,22 @@ function UserActions({ user, onMessage, onPlan, onResetSession }: UserActionsPro
           ))}
         </SelectContent>
       </Select>
+
+      <Dialog open={editOpen} onOpenChange={setEditOpen}>
+        <DialogTrigger asChild>
+          <Button variant="outline" size="icon" title="Editar e-mail / telefone"><Pencil className="w-4 h-4" /></Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader><DialogTitle>Editar dados de {user.full_name || 'usuário'}</DialogTitle></DialogHeader>
+          <div className="space-y-3">
+            <div className="space-y-1"><Label>E-mail</Label><Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} /></div>
+            <div className="space-y-1"><Label>WhatsApp / Telefone</Label><Input value={whatsapp} onChange={(e) => setWhatsapp(e.target.value)} /></div>
+          </div>
+          <DialogFooter>
+            <Button className="bg-[#1A1B1A]" onClick={() => { onEdit(email.trim(), whatsapp.trim()); setEditOpen(false); }}>Salvar</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       <Dialog open={msgOpen} onOpenChange={setMsgOpen}>
         <DialogTrigger asChild>
