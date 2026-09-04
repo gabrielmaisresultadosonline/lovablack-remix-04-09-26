@@ -1036,14 +1036,14 @@ function DocRule({ icon: Icon, title, children }: { icon: any; title: string; ch
 function StatCard({ icon: Icon, label, value, color = "text-[#1A1B1A]" }: any) {
   return (
     <Card className="bg-white border-neutral-200">
-      <CardContent className="pt-6">
-        <div className="flex items-center gap-4">
-          <div className="p-3 bg-neutral-100 rounded-2xl">
-            <Icon className="w-6 h-6 text-[#1A1B1A]" />
+      <CardContent className="pt-4 md:pt-6 px-3 md:px-6">
+        <div className="flex items-center gap-3 md:gap-4">
+          <div className="p-2 md:p-3 bg-neutral-100 rounded-2xl shrink-0">
+            <Icon className="w-5 h-5 md:w-6 md:h-6 text-[#1A1B1A]" />
           </div>
-          <div>
-            <p className="text-xs text-neutral-500 font-bold uppercase">{label}</p>
-            <p className={`text-2xl font-black ${color}`}>{value}</p>
+          <div className="min-w-0">
+            <p className="text-[10px] md:text-xs text-neutral-500 font-bold uppercase leading-tight break-words">{label}</p>
+            <p className={`text-xl md:text-2xl font-black ${color}`}>{value}</p>
           </div>
         </div>
       </CardContent>
