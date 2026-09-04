@@ -171,13 +171,13 @@ function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-[#F7F1EB] p-4 md:p-8 pb-20">
-      <div className="max-w-7xl mx-auto space-y-8">
-        <header>
-          <h1 className="text-3xl font-bold text-[#1A1B1A]">Painel Administrativo</h1>
-          <p className="text-neutral-500">Gestão Total LOVABLACK</p>
+      <div className="max-w-7xl mx-auto space-y-6 md:space-y-8">
+        <header className="rounded-2xl bg-white/70 border border-black/5 p-4 md:p-6">
+          <h1 className="text-2xl md:text-3xl font-bold text-[#1A1B1A]">Painel Administrativo</h1>
+          <p className="text-sm md:text-base text-neutral-500">Gestão Total LOVABLACK</p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
           <StatCard icon={Users} label="Total Registros" value={stats?.total || 0} />
           <StatCard icon={CheckCircle} label="Assinaturas Ativas" value={stats?.active || 0} color="text-green-600" />
           <StatCard icon={XCircle} label="Expirados" value={stats?.expired || 0} color="text-red-600" />
