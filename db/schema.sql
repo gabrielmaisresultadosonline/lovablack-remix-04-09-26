@@ -100,6 +100,11 @@ CREATE TABLE IF NOT EXISTS extension_docs (
   updated_at timestamptz NOT NULL DEFAULT now()
 );
 
+-- Garante que todos os planos usados pelo painel sejam aceitos (inclui 'fortnight').
+ALTER TABLE subscriptions DROP CONSTRAINT IF EXISTS subscriptions_type_check;
+ALTER TABLE subscriptions ADD CONSTRAINT subscriptions_type_check
+  CHECK (type IN ('trial', 'fortnight', 'monthly', 'semiannual', 'annual', 'lifetime', 'paid'));
+
 CREATE INDEX IF NOT EXISTS users_registration_ip_idx ON users(registration_ip);
 CREATE INDEX IF NOT EXISTS subscriptions_expiry_idx ON subscriptions(status, expires_at);
 CREATE INDEX IF NOT EXISTS transactions_user_idx ON transactions(user_id, created_at DESC);
